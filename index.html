@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Área de Membros — Supersensi</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root {
+      --bg: #0f1112;
+      --card: #111416;
+      --muted: #9aa3af;
+      --brand-red: #9013FE;
+    }
+    html,body {
+      height:100%;
+      font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      background: radial-gradient(60vw 60vw at 50% 20%, rgba(0,0,0,.35), transparent 60%), var(--bg);
+      color:#fff;
+    }
+    .auth-card {
+      width:420px; max-width:92vw;
+      border-radius:14px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      border:1px solid rgba(255,255,255,0.04);
+      padding:36px;
+      box-shadow: 0 24px 70px rgba(0,0,0,.6);
+    }
+    .logo-pad {
+      width:100px; height:auto;
+      display:block;
+      margin:0 auto 6px;
+      object-fit:contain;
+    }
+    .input-box {
+      background:#0f1314;
+      border:1px solid rgba(255,255,255,0.06);
+      padding:12px 14px;
+      border-radius:10px;
+      color:#e6e9ee;
+      outline:none;
+      width:100%;
+    }
+    .input-box::placeholder { color:#777c82; }
+    .brand-btn {
+      background:var(--brand-red);
+      box-shadow:0 10px 26px rgba(229,57,53,.28);
+    }
+    .brand-btn:hover { filter:brightness(1.04); }
+    .error-text {
+      color:#f87171;
+      font-size:13px;
+      margin-top:8px;
+      display:none;
+    }
+  </style>
+</head>
+<body class="grid place-items-center min-h-screen p-6">
+
+  <div class="auth-card">
+    <!-- Substitua pelo nome real do arquivo da sua logo -->
+    <img src="images/1.avif" alt="Logo" class="logo-pad select-none pointer-events-none" />
+
+    <h2 class="text-center text-2xl font-extrabold mb-1">ÁREA DE MEMBROS</h2>
+    <p class="text-center text-sm text-[var(--muted)] mb-6">Acesse seu conteúdo exclusivo.</p>
+
+    <form id="loginForm" class="space-y-4" autocomplete="off" novalidate>
+      <div>
+        <label class="text-xs text-[var(--muted)] block mb-2">Seu Usuário</label>
+        <input id="username" class="input-box" type="text" placeholder="Usuário" autocomplete="off" />
+      </div>
+
+      <div>
+        <label class="text-xs text-[var(--muted)] block mb-2">Sua Senha</label>
+        <input id="password" class="input-box" type="password" placeholder="Senha" autocomplete="new-password" />
+      </div>
+
+      <div id="err" class="error-text">Credenciais incorretas. Tente novamente.</div>
+
+      <button id="loginBtn" type="button" class="w-full h-11 rounded-lg text-white font-extrabold brand-btn cursor-pointer">
+        ENTRAR
+      </button>
+    </form>
+  </div>
+
+  <script>
+    const DEMO_USER = 'painelzimo.com';
+    const DEMO_PASS = 'zimo123';
+    const REDIRECT = 'https://supersensi.shop/app/';
+
+    const u = document.getElementById('username');
+    const p = document.getElementById('password');
+    const err = document.getElementById('err');
+    const btn = document.getElementById('loginBtn');
+    const form = document.getElementById('loginForm');
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!u.value) u.value = DEMO_USER;
+      if (!p.value) p.value = DEMO_PASS;
+    });
+
+    function doLogin() {
+      const user = (u.value || '').trim();
+      const pass = (p.value || '').trim();
+
+      if (user === DEMO_USER && pass === DEMO_PASS) {
+        err.style.display = 'none';
+        btn.disabled = true;
+        btn.textContent = 'ENTRANDO...';
+        setTimeout(() => {
+          window.location.assign(REDIRECT);
+        }, 600);
+      } else {
+        err.textContent = 'Use o acesso padrão: supersensioficial.com / supersensi123';
+        err.style.display = 'block';
+      }
+    }
+
+    btn.addEventListener('click', doLogin);
+    form.addEventListener('keydown', e => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        doLogin();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+body {
+    font-family: 'Poppins', sans-serif;
+}
+.font-teko { 
+    font-family: 'Teko', sans-serif; 
+}
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out forwards;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Estilos da Navegação do Painel */
+.nav-button.active {
+    background-color: #E53935;
+    color: white;
+}
+.nav-button.active i {
+    color: white;
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar { width: 4px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: #1E1E1E; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: #E53935; border-radius: 4px; }
+
+/* Estilos para Animação IA */
+.ia-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex; align-items: center; justify-content: center; z-index: 100;
+}
+.ia-loader span {
+    display: block; text-align: center; opacity: 0;
+    animation: fadeInText 1s ease-in-out forwards;
+}
+@keyframes fadeInText {
+    to { opacity: 1; }
+}
+
+/* --- NOVOS ESTILOS --- */
+
+/* Fundo Animado */
+.animated-bg {
+    background: linear-gradient(-45deg, #121212, #1a1a1a, #121212, #2a0a0a);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Animação do Botão Principal */
+.spinning-border {
+    animation: spin 2s linear infinite;
+}
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Estilos do Modal (Pop-up) */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); backdrop-filter: blur(5px);
+    display: flex; align-items: center; justify-content: center; z-index: 110;
+}
